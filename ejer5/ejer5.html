@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calcular Últimos 4 Días del Mes</title>
+</head>
+<body>
+    <h1>Calcular Últimos 4 Días del Mes</h1>
+    <p>Ingrese una fecha en el formato mm/dd/yyyy para calcular los últimos 4 días de ese mes:</p>
+
+    <input type="text" id="fecha" placeholder="Fecha (mm/dd/yyyy)">
+    <button onclick="calcularUltimosDias()">Calcular</button>
+
+    <h2>Últimos 4 Días del Mes:</h2>
+    <p id="ultimosDias"></p>
+
+    <script>
+        function knowDate(date) {
+            var d = new Date(date);
+            var aux = new Date(date);
+            d.setDate(aux.getDate() - (aux.getDate() - 1));
+
+            document.write(d + "<br>");
+
+            for (var i = 31; i > 27; i--) {
+                d.setDate(i);
+                if (d.getMonth() > aux.getMonth()) {
+                    d = new Date(date);
+                } else {
+                    document.write(d + "<br>");
+                    break;
+                }
+            }
+        }
+
+        function calcularUltimosDias() {
+            var fecha = document.getElementById("fecha").value;
+            if (!/^\d{2}\/\d{2}\/\d{4}$/.test(fecha)) {
+                alert("Ingrese una fecha válida en el formato mm/dd/yyyy.");
+                return;
+            }
+            knowDate(fecha);
+        }
+    </script>
+</body>
+</html>

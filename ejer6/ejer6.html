@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Daño Pokémon</title>
+</head>
+<body>
+    <h1>Calculadora de Daño Pokémon</h1>
+    <p>Ingrese los tipos de ataque y defensa, así como los valores de ataque y defensa para calcular el daño:</p>
+
+    <form id="calculatorForm">
+        <label for="type1">Tipo de Ataque:</label>
+        <select id="type1" name="type1">
+            <option value="electricidad">Electricidad</option>
+            <option value="agua">Agua</option>
+            <option value="fuego">Fuego</option>
+            <option value="hierba">Hierba</option>
+        </select>
+        <br><br>
+        <label for="type2">Tipo de Defensa:</label>
+        <select id="type2" name="type2">
+            <option value="electricidad">Electricidad</option>
+            <option value="agua">Agua</option>
+            <option value="fuego">Fuego</option>
+            <option value="hierba">Hierba</option>
+        </select>
+        <br><br>
+        <label for="attack">Valor de Ataque:</label>
+        <input type="number" id="attack" name="attack" required>
+        <br><br>
+        <label for="defense">Valor de Defensa:</label>
+        <input type="number" id="defense" name="defense" required>
+        <br><br>
+        <input type="button" value="Calcular Daño" onclick="calculateDamage()">
+    </form>
+
+    <h2>Resultado:</h2>
+    <p id="result">El daño calculado será mostrado aquí.</p>
+
+    <script>
+        function calculateDamage() {
+            var type1 = document.getElementById("type1").value;
+            var type2 = document.getElementById("type2").value;
+            var attack = parseFloat(document.getElementById("attack").value);
+            var defense = parseFloat(document.getElementById("defense").value);
+            var efficacy = 0.5;
+
+            if (type1 !== type2) {
+                if (type1 === "fuego" && type2 === "hierba") {
+                    efficacy = 2;
+                }
+                if (type1 === "agua" && type2 === "fuego") {
+                    efficacy = 2;
+                }
+                if (type1 === "hierba" && type2 === "agua") {
+                    efficacy = 2;
+                }
+                if (type1 === "electricidad" && type2 === "agua") {
+                    efficacy = 2;
+                }
+                if ((type1 === "fuego" && type2 === "electrico") || (type2 === "fuego" && type1 === "electrico")) {
+                    efficacy = 1;
+                }
+                if ((type1 === "fuego" && type2 === "hierba") || (type2 === "fuego" && type1 === "hierba")) {
+                    efficacy = 1;
+                }
+            }
+
+            var damage = Math.ceil(50 * (attack / defense) * efficacy);
+            document.getElementById("result").textContent = `El daño calculado es: ${damage}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secuencia de Fibonacci</title>
+</head>
+<body>
+    <h1>Secuencia de Fibonacci</h1>
+    <p>Haz clic en el botón para mostrar los primeros 15 números de la secuencia de Fibonacci:</p>
+
+    <button onclick="calcularFibonacci()">Generar Secuencia</button>
+
+    <h2>Secuencia de Fibonacci:</h2>
+    <pre id="resultado"></pre>
+
+    <script>
+        function calcularFibonacci() {
+            var x = 0;
+            var y = 1;
+            var z;
+            var resultado = "[" + y + "]\n";
+
+            for (var i = 0; i < 15; i++) {
+                z = x + y;
+                resultado += "[" + z + "]\n";
+                y = x;
+                x = z;
+            }
+
+            document.getElementById("resultado").textContent = resultado;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Números Impares en un Rango</title>
+    <style>
+        #input-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mostrar Números Impares en un Rango</h1>
+    </header>
+    <section>
+        <div id="input-box">
+            <label for="numeroA">Número Inicial (A):</label>
+            <input type="number" id="numeroA" name="numeroA" required>
+            <br><br>
+            <label for="numeroB">Número Final (B):</label>
+            <input type="number" id="numeroB" name="numeroB" required>
+        </div>
+
+        <button onclick="generarImpares()">Generar Números Impares</button>
+        <button onclick="limpiarTabla()">Limpiar</button>
+    </section>
+
+    <section>
+        <h2>Números Impares en el Rango:</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Número Impar</th>
+                </tr>
+            </thead>
+            <tbody id="resultado">
+                
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <script>
+            function generarImpares() {
+                var numeroA = parseInt(document.getElementById("numeroA").value);
+                var numeroB = parseInt(document.getElementById("numeroB").value);
+
+                
+                document.getElementById("resultado").innerHTML = "";
+
+               
+                for (var i = numeroA; i <= numeroB; i++) {
+                    if (i % 2 !== 0) {
+                        var fila = document.createElement("tr");
+                        var celda = document.createElement("td");
+                        celda.textContent = i;
+                        fila.appendChild(celda);
+                        document.getElementById("resultado").appendChild(fila);
+                    }
+                }
+            }
+
+            function limpiarTabla() {
+                document.getElementById("resultado").innerHTML = "";
+            }
+        </script>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Palabras al Revés</title>
+</head>
+<body>
+    <h1>Palabras al Revés</h1>
+
+    <button onclick="mostrarPalabraAlReves()">Mostrar Palabra al Revés</button>
+
+    <script>
+        function mostrarPalabraAlReves() {
+            var palabra = prompt("Ingresa una palabra:");
+            
+            if (palabra !== null) {
+                var palabraAlReves = palabra.split("").reverse().join("");
+                alert("Palabra al revés: " + palabraAlReves);
+            }
+        }
+    </script>
+</body>
+</html>
